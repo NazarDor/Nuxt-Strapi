@@ -1,8 +1,11 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <NuxtLink to="/products">Продукты</NuxtLink>
-    <NuxtLink to="/about">Про нас</NuxtLink>
+    <Navbar />
     <NuxtPage />
   </div>
 </template>
+
+<script setup>
+import Navbar from "@/components/Navbar.vue";
+</script>
