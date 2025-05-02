@@ -55,6 +55,7 @@ const buyProduct = async () => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      id: props.product.id,
       title: props.product.title,
       price: props.product.price,
     }),

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "stripeSessionId": {
+      "type": "string"
+    },
+    "serviceTitle": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "email": {
+      "type": "email"
+    },
+    "serviceId": {
+      "type": "string"
+    }
+  }
+}

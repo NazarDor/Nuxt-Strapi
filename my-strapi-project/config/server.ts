@@ -4,4 +4,14 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  api: {
+    rest: {
+      prefix: '/api',
+      defaultLimit: 25,
+      maxLimit: 100,
+    },
+  },
+  webhooks: {
+    populate: true,
+  },
 });

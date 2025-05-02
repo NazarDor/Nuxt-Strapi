@@ -1,13 +1,12 @@
-import Stripe from 'stripe'
-import { defineEventHandler, readBody } from 'h3'
+import Stripe from 'stripe';
+import { defineEventHandler, readBody } from 'h3';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2022-11-15',
-})
+});
 
 export default defineEventHandler(async (event) => {
-    const body = await readBody(event)
-
+    const body = await readBody(event);
     const { title, price } = body
 
     const session = await stripe.checkout.sessions.create({
@@ -26,16 +25,14 @@ export default defineEventHandler(async (event) => {
             },
         ],
         metadata: {
-            productTitle: title,
+            serviceTitle: title,
             amount: price.toString(),
-            productId: body.id,
-            type: "product",
+            serviceId: body.id,
+            type: "service",
         },
         success_url: `${process.env.NUXT_URL}/success`,
         cancel_url: `${process.env.NUXT_URL}/cancel`,
-    })
+    });
 
-    return {
-        id: session.id,
-    }
-})
+    return { id: session.id };
+});

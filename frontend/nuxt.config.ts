@@ -17,5 +17,11 @@ export default defineNuxtConfig({
       apiBase: 'http://localhost:1337/api',
       url: process.env.STRAPI_URL || 'http://localhost:1337',
     }
+  },
+
+  vite: {
+    server: {
+      allowedHosts: ['bc8c-176-241-139-28.ngrok-free.app']
+    }
   }
 })

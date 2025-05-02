@@ -19,7 +19,6 @@ const { data: response } = await useFetch(
   `${config.public.apiBase}/products?populate=*`
 );
 const products = response.value?.data || [];
-console.log(products, "products");
 </script>
 
 <style scoped>
