@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-6xl mx-auto mt-10 text-center">
-    <h1 class="text-3xl font-bold mb-6">Наши услуги</h1>
+    <h1 class="text-3xl font-bold mb-6">
+      <label>{{ $t("services") }}</label>
+    </h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <ServiceCard
         v-for="service in services"

@@ -8,14 +8,15 @@
       </p>
       <p class="card-price">{{ service.price }} $</p>
 
-      <button class="btn-primary" @click="openModal">Замовити в один клік</button>
+      <button class="btn-primary" @click="openModal">
+        {{ $t("order-in-one-click") }}
+      </button>
     </div>
 
-    <!-- Модальное окно -->
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
       <div class="modal">
         <header class="modal-header">
-          <h3>Замовлення послуги: {{ service.title }}</h3>
+          <h3>{{ $t("order-service") }}: {{ service.title }}</h3>
           <button
             class="modal-close-btn"
             @click="closeModal"
@@ -27,10 +28,10 @@
         </header>
 
         <div class="modal-body">
-          <p>Оберіть дату та час для послуги:</p>
+          <p>{{ $t("select-date-time") }}</p>
 
           <div class="form-group">
-            <label for="date-picker">Дата</label>
+            <label for="date-picker">{{ $t("date") }}</label>
             <input
               id="date-picker"
               type="date"
@@ -41,14 +42,14 @@
             />
           </div>
           <div class="form-group">
-            <label for="time-select">Час</label>
+            <label for="time-select">{{ $t("time") }}</label>
             <select
               id="time-select"
               v-model="selectedTime"
               :disabled="isPending"
               class="input"
             >
-              <option value="" disabled>Оберіть час</option>
+              <option value="" disabled>{{ $t("select-time") }}</option>
               <option v-for="time in availableTimes" :key="time" :value="time">
                 {{ time }}
               </option>
@@ -57,13 +58,13 @@
         </div>
 
         <footer class="modal-footer">
-          <p class="price">Ціна: {{ service.price }} $</p>
+          <p class="price">{{ $t("price") }}: {{ service.price }} $</p>
           <button
             class="btn-primary"
             @click="bookService"
             :disabled="!selectedDate || !selectedTime || isPending"
           >
-            {{ isPending ? "Зачекайте..." : "Підтвердити замовлення" }}
+            {{ isPending ? $t("wait") : $t("confirm-order") }}
           </button>
         </footer>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-6xl mx-auto mt-10 text-center">
-    <h1 class="text-3xl font-bold mb-6">Наши продукты</h1>
+    <label>{{ $t("products") }}</label>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <ProductCard
         v-for="product in products"

@@ -1,0 +1,24 @@
+{
+  "hello": "Hello",
+  "language": "Language",
+  "home-page": "Home",
+  "products": "Products",
+  "about": "About",
+  "services": "Services",
+
+  "order-in-one-click": "Order in one click",
+
+  "welcome": "Welcome",
+  "select-a-product-in-the-Products-section": "Select a product in the 'Products' section",
+  "about-us": "About Us",
+  "about-us-desc": "We are a team that creates quality products. Our goal is to make your purchase fast and enjoyable.",
+  "order-service": "Order service",
+  "select-date-time": "Select date and time for service:",
+  "date": "Date",
+  "time": "Time",
+  "select-time": "Select time",
+  "price": "Price",
+  "wait": "Please wait...",
+  "confirm-order": "Confirm order",
+  "order-error": "An error occurred while placing your order. Please try again later."
+}
