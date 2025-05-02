@@ -39,6 +39,7 @@ export default defineEventHandler(async (event) => {
             data: {
               stripeSessionId: session.id,
               email: session.customer_details.email,
+              customer: session.customer_details.name,
               amount: session.amount_total / 100,
               productTitle: session.metadata.productTitle,
               productId: session.metadata.productId,
@@ -63,9 +64,10 @@ export default defineEventHandler(async (event) => {
               stripeSessionId: session.id,
               serviceTitle: session.metadata.serviceTitle,
               amount: session.amount_total / 100,
+              customer: session.customer_details.name,
               email: session.customer_details.email,
               serviceId: session.metadata.serviceId,
-
+              date: session.metadata.selectedDate,
             },
           }),
         });

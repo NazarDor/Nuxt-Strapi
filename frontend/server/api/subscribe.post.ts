@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
-    const { title, price } = body
+    const { title, price, appointmentDate } = body
 
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -28,6 +28,7 @@ export default defineEventHandler(async (event) => {
             serviceTitle: title,
             amount: price.toString(),
             serviceId: body.id,
+            selectedDate: appointmentDate,
             type: "service",
         },
         success_url: `${process.env.NUXT_URL}/success`,
