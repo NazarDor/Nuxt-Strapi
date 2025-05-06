@@ -25,6 +25,12 @@
     },
     "serviceId": {
       "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "customer": {
+      "type": "string"
     }
   }
 }

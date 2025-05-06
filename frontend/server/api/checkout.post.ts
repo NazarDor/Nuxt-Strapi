@@ -29,6 +29,8 @@ export default defineEventHandler(async (event) => {
             productTitle: title,
             amount: price.toString(),
             productId: body.id,
+            categoryId: body.categoryId,       // ← добавляем
+            categoryTitle: body.categoryTitle, // ← по желанию
             type: "product",
         },
         success_url: `${process.env.NUXT_URL}/success`,

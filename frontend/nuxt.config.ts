@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from '@primeuix/themes/aura';
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -10,7 +12,28 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/strapi',
     '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    '@primevue/nuxt-module',
+    '@primevue/nuxt-module',
+    '@samk-dev/nuxt-vcalendar'
   ],
+  primevue: {
+    options: {
+      ripple: true,
+      inputVariant: 'filled',
+      theme: {
+        preset: Aura,
+        options: {
+          prefix: 'p',
+          darkModeSelector: '.my-app-dark',
+          cssLayer: false
+        }
+      }
+    }
+  },
+  imports: {
+    dirs: ['stores']
+  },
 
   runtimeConfig: {
     public: {
@@ -21,7 +44,7 @@ export default defineNuxtConfig({
 
   vite: {
     server: {
-      allowedHosts: ['bc8c-176-241-139-28.ngrok-free.app']
+      allowedHosts: ['6ef1-88-155-26-164.ngrok-free.app']
     }
   }
 })

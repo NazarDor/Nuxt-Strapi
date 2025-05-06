@@ -16,7 +16,6 @@
     <div v-if="isModalOpen" class="modal-overlay" @click.self="closeModal">
       <div class="modal">
         <header class="modal-header">
-          <h3>{{ $t("order-service") }}: {{ service.title }}</h3>
           <button
             class="modal-close-btn"
             @click="closeModal"
@@ -25,21 +24,29 @@
           >
             &times;
           </button>
+          <h3>
+            {{ $t("order-service") }}: <br />
+            {{ service.title }}
+          </h3>
         </header>
 
         <div class="modal-body">
-          <p>{{ $t("select-date-time") }}</p>
-
           <div class="form-group">
+            <p>{{ $t("select-date-time") }}</p>
+
             <label for="date-picker">{{ $t("date") }}</label>
-            <input
-              id="date-picker"
-              type="date"
-              v-model="selectedDate"
-              :min="minDate"
-              :disabled="isPending"
-              class="input"
-            />
+            <div class="calendar">
+              <VDatePicker
+                v-model="selectedDate"
+                :min-date="minDate"
+                :disabled="isPending"
+                color="blue"
+                :popover="{ placement: 'bottom' }"
+                id="date-picker"
+                class="input"
+                :attributes="attrs"
+              />
+            </div>
           </div>
           <div class="form-group">
             <label for="time-select">{{ $t("time") }}</label>
@@ -80,6 +87,7 @@ const isModalOpen = ref(false);
 const selectedDate = ref(null);
 const selectedTime = ref("");
 const isPending = ref(false);
+const minDate = new Date();
 
 const availableTimes = [
   "09:00",
@@ -99,6 +107,17 @@ const props = defineProps({
     required: true,
   },
 });
+
+const attrs = ref([
+  {
+    key: "today",
+    highlight: {
+      color: "green",
+      fillMode: "solid",
+    },
+    dates: new Date(),
+  },
+]);
 
 const BASE_URL = "http://localhost:1337";
 
@@ -125,11 +144,6 @@ const closeModal = () => {
     isModalOpen.value = false;
   }
 };
-
-const minDate = computed(() => {
-  const today = new Date();
-  return today.toISOString().split("T")[0];
-});
 
 const bookService = async () => {
   if (!selectedDate.value || !selectedTime.value) return;
@@ -166,7 +180,7 @@ const bookService = async () => {
 
 <style scoped>
 .card {
-  background: #fff;
+  border: 1px solid #e5e5e5;
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
@@ -187,7 +201,6 @@ const bookService = async () => {
   font-weight: 600;
 }
 .card-description {
-  color: #4a5568; /* gray-600 */
   margin-top: 0.5rem;
   font-size: 0.875rem;
 }
@@ -197,8 +210,7 @@ const bookService = async () => {
   margin-top: 0.5rem;
 }
 .btn-primary {
-  background-color: #2563eb; /* blue-600 */
-  color: white;
+  background-color: #2563eb;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: none;
@@ -209,24 +221,23 @@ const bookService = async () => {
   transition: background-color 0.3s ease;
 }
 .btn-primary:hover:not(:disabled) {
-  background-color: #1e40af; /* blue-700 */
+  background-color: #1e40af;
 }
 .btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Модальное окно */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 .modal {
+  color: #2d3748;
   background: white;
   border-radius: 12px;
   max-width: 480px;
@@ -236,9 +247,6 @@ const bookService = async () => {
   flex-direction: column;
 }
 .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 1rem;
 }
 .modal-header h3 {
@@ -251,9 +259,11 @@ const bookService = async () => {
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-  color: #4a5568;
   padding: 0 0.25rem;
   transition: color 0.3s ease;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 .modal-close-btn:hover:not(:disabled) {
   color: #1e40af;
@@ -265,7 +275,6 @@ const bookService = async () => {
 
 .modal-body p {
   margin-bottom: 1rem;
-  color: #4a5568;
 }
 
 .form-group {
@@ -276,14 +285,15 @@ const bookService = async () => {
 .form-group label {
   font-weight: 600;
   margin-bottom: 0.25rem;
-  color: #2d3748;
 }
 .input {
   padding: 0.5rem;
   border: 1px solid #cbd5e0;
   border-radius: 6px;
+  color: #000000;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  background: transparent;
 }
 .input:focus {
   outline: none;
@@ -296,9 +306,14 @@ const bookService = async () => {
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  color: #ffffff;
 }
 .price {
+  color: #2d3748;
   font-weight: 700;
   font-size: 1.125rem;
+}
+.calendar{
+  width: 100%;
 }
 </style>

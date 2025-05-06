@@ -10,6 +10,11 @@
 
 <script setup>
 import { NuxtLink } from "#components";
+const cartStore = useCartStore();
+
+onMounted(() => {
+  cartStore.clearCart();
+});
 </script>
 
 <style scoped>

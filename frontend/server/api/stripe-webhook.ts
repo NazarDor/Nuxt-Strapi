@@ -43,6 +43,9 @@ export default defineEventHandler(async (event) => {
               amount: session.amount_total / 100,
               productTitle: session.metadata.productTitle,
               productId: session.metadata.productId,
+              category: {
+                connect: [session.metadata.categoryId],
+              },
             },
           }),
         });
@@ -50,7 +53,7 @@ export default defineEventHandler(async (event) => {
         console.error('❌ Failed to create order in Strapi:', err);
       }
     }
-    
+
     if (type === 'service') {
       try {
         await $fetch(`${process.env.STRAPI_URL}/api/subscriptions`, {
@@ -75,7 +78,35 @@ export default defineEventHandler(async (event) => {
         console.error('❌ Failed to create subscription in Strapi:', err);
       }
     }
-  }
 
+    if (type === "cart-checkout") {
+      const cart = JSON.parse(session.metadata.cart);
+
+      try {
+        for (const item of cart) {
+          await $fetch(`${process.env.STRAPI_URL}/api/orders`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+            },
+            body: {
+              data: {
+                email: session.customer_details.email,
+                customer: session.customer_details.name,
+                amount: item.price,
+                stripeSessionId: session.id,
+                productTitle: item.title,
+                quantity: item.quantity || 1,
+                productId: item.id,
+              },
+            },
+          });
+        }
+      } catch (err) {
+        console.error('❌ Failed to create orders in Strapi:', err);
+      }
+    }
+  }
   return { received: true }
 })

@@ -5,6 +5,7 @@
   "products": "Products",
   "about": "About",
   "services": "Services",
+  "all": "All",
 
   "order-in-one-click": "Order in one click",
 
@@ -20,5 +21,12 @@
   "price": "Price",
   "wait": "Please wait...",
   "confirm-order": "Confirm order",
-  "order-error": "An error occurred while placing your order. Please try again later."
+  "order-error": "An error occurred while placing your order. Please try again later.",
+  "add-to-cart": "Add to Cart",
+  "cart": {
+    "added": "{title} added to cart",
+    "removed": "Removed",
+    "empty": "Empty",
+    "checkout": "Checkout"
+  }
 }
