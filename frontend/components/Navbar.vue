@@ -17,6 +17,28 @@
         <NuxtLink to="/about" class="hover:text-blue-600 transition-colors">
           <label>{{ $t("about") }}</label>
         </NuxtLink>
+        <NuxtLink
+          v-if="user"
+          to="/admin"
+          class="hover:text-blue-600 transition-colors"
+        >
+          <label>Admin</label>
+        </NuxtLink>
+        <NuxtLink
+          v-if="!user"
+          to="/login"
+          class="hover:text-blue-600 transition-colors"
+        >
+          <label>Login</label>
+        </NuxtLink>
+
+        <button
+          v-else
+          @click="logoutAndRedirect"
+          class="hover:text-blue-600 transition-colors"
+        >
+          <label>Logout</label>
+        </button>
       </nav>
       <div class="px-4 py-3 flex gap-3 items-center">
         <CartWidget />
@@ -50,10 +72,24 @@
 </template>
 
 <script setup lang="ts">
-import CartWidget from "./CartWidget.vue";
 import { useTheme } from "@/composables/useTheme";
+import { useAuth } from "~/composables/useAuth";
+import CartWidget from "./CartWidget.vue";
+import { ref, onMounted } from "vue";
 
 const { theme, toggleTheme } = useTheme();
+const authReady = ref(false);
+const { user, fetchUser, logout } = useAuth();
+
+const logoutAndRedirect = () => {
+  logout();
+  navigateTo("/login");
+};
+
+onMounted(async () => {
+  await fetchUser();
+  authReady.value = true;
+});
 </script>
 
 <style scoped>

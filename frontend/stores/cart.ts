@@ -38,5 +38,5 @@ export const useCartStore = defineStore('cart', {
     totalItems: (state) => state.items.reduce((sum, item) => sum + item.quantity, 0),
     totalPrice: (state) => state.items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
   },
-  persist: true // Для сохранения в localStorage
+  persist: true 
 })

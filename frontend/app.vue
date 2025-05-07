@@ -12,5 +12,13 @@
 <script setup>
 import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
-import 'primeicons/primeicons.css'
+import "primeicons/primeicons.css";
+import { onMounted } from 'vue'
+import { useAuth } from '~/composables/useAuth'
+
+onMounted(async () => {
+    const { fetchUser } = useAuth()
+    await fetchUser()
+})
+
 </script>

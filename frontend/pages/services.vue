@@ -23,7 +23,7 @@
         {{ category.Name }}
       </button>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 text-white sm:grid-cols-2 md:grid-cols-3 gap-6">
       <ServiceCard
         v-for="service in filteredServices"
         :key="service.id"
