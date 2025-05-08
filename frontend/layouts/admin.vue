@@ -1,8 +1,6 @@
 <template>
   <div>
-    <nav>
-      <NuxtLink to="/admin">Dashboard</NuxtLink>
-    </nav>
+    <nav></nav>
     <slot />
   </div>
 </template>

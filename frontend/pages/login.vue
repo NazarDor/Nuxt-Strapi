@@ -51,13 +51,17 @@
     </div>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref } from "vue";
 import { useAuth } from "~/composables/useAuth";
 const email = ref("");
 const password = ref("");
 const { login } = useAuth();
+
+definePageMeta({
+  middleware: "auth",
+});
 
 const submit = async () => {
   await login(email.value, password.value);
