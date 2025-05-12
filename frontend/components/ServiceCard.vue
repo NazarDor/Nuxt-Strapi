@@ -237,8 +237,8 @@ const bookService = async () => {
   z-index: 1000;
 }
 .modal {
-  color: #2d3748;
   background: white;
+  color: #2d3748;
   border-radius: 12px;
   max-width: 480px;
   width: 90%;
@@ -290,7 +290,6 @@ const bookService = async () => {
   padding: 0.5rem;
   border: 1px solid #cbd5e0;
   border-radius: 6px;
-  color: #000000;
   font-size: 1rem;
   transition: border-color 0.3s ease;
   background: transparent;
@@ -306,7 +305,6 @@ const bookService = async () => {
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  color: #ffffff;
 }
 .price {
   color: #2d3748;

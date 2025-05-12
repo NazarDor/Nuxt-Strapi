@@ -1,5 +1,5 @@
 <template>
-  <header class="shadow-md sticky top-0 z-50">
+  <header class="shadow-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <NuxtLink to="/" class="text-2xl font-bold hover:text-blue-800">
         MyShop

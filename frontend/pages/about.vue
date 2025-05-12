@@ -2,13 +2,10 @@
   <div
     class="max-w-4xl mx-auto mt-16 px-4 text-center rounded-2xl shadow-xl pb-16"
   >
-    <h1
-      class="text-4xl font-extrabold mb-8 tracking-tight drop-shadow"
-    >
+    <h1 class="text-4xl font-extrabold mb-8 tracking-tight drop-shadow">
       {{ aboutData.data?.title }}
     </h1>
     <div v-for="block in aboutData.data?.blocks" :key="block.id">
-      <!-- Rich Text Block -->
       <div
         v-if="block.__component === 'shared.rich-text'"
         class="prose prose-lg mx-auto mb-12 text-left leading-relaxed"
@@ -51,6 +48,7 @@
 const { data: aboutData } = await useFetch(
   "http://localhost:1337/api/about?populate[blocks][populate]=*"
 );
+
 </script>
 
 <style scoped>

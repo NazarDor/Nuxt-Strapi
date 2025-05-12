@@ -8,7 +8,7 @@ export default {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}'
   ],
-  darkMode: 'class',
+  darkMode: ['class', '.my-app-dark'],
   theme: {
     extend: {},
   },

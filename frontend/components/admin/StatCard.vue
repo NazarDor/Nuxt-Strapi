@@ -6,19 +6,13 @@
       :key="stat.label"
       class="col-span-12 lg:col-span-6 xl:col-span-3 transition-all duration-300 hover:scale-[1.02]"
     >
-      <!-- Карточка с тенью и скруглением -->
-      <div
-        class="card bg-white dark:bg-surface-800 rounded-xl shadow-lg hover:shadow-xl p-6"
-      >
+      <div class="card rounded-xl shadow-lg shadow-xl p-6">
         <div class="flex justify-between items-start mb-4">
-          <!-- Текстовый блок -->
           <div>
-            <span
-              class="block text-gray-500 dark:text-gray-400 text-sm font-medium mb-2"
-            >
+            <span class="block text-sm font-medium mb-2">
               {{ stat.label }}
             </span>
-            <div class="text-2xl font-bold text-gray-900 dark:text-white">
+            <div class="text-2xl font-bold">
               {{ stat.value }}
             </div>
           </div>
@@ -32,12 +26,11 @@
           </div>
         </div>
 
-        <!-- Нижний текст -->
         <div class="mt-4">
-          <span class="text-primary-500 dark:text-primary-400 font-medium">
+          <span class="font-medium">
             {{ stat.highlight }}
           </span>
-          <span class="text-gray-500 dark:text-gray-400 text-sm">
+          <span class="text-sm">
             {{ stat.subtext }}
           </span>
         </div>
@@ -107,12 +100,11 @@ const stats = computed(() => [
 </script>
 
 <style scoped>
-/* Дополнительные кастомные стили если нужно */
 .card {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .dark .card {
-  background: #1f2937; /* Темный фон для dark mode */
+  background: #1f2937;
 }
 </style>

@@ -4,8 +4,7 @@
       <div class="font-semibold text-xl mb-4">Recent Sales</div>
       <div class="overflow-auto">
         <table class="min-w-full text-left">
-
-          <thead class="bg-gray-100 sticky top-0">
+          <thead class="sticky top-0">
             <tr>
               <th class="py-2 px-4">Id</th>
               <th class="py-2 px-4">Produt</th>
