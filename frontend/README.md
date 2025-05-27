@@ -1,75 +1,106 @@
-# Nuxt Minimal Starter
+# E-Strapi Project
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 🧾 Overview
 
-## Setup
+This project consists of a full-stack application using **Nuxt 3** (frontend) and **Strapi** (backend) with integrated **Stripe** payment system.
 
-Make sure to install dependencies:
+**Directory Structure:**
+
+```
+e-strapi/
+├── back/         # Strapi backend
+└── frontend/     # Nuxt frontend
+```
+
+---
+
+## ⚙️ Backend (Strapi)
+
+### Prerequisites
+
+- Node.js >= 18.x
+- npm >= 9.x or yarn
+
+### Installation
 
 ```bash
-# npm
+cd back
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Running the Backend
 
 ```bash
-# npm
+npm run develop
+```
+
+The backend will typically run on [http://localhost:1337](http://localhost:1337)
+
+---
+
+## 🌐 Frontend (Nuxt 3)
+
+### Prerequisites
+
+- Node.js >= 18.x
+- npm or yarn
+
+### Installation
+
+```bash
+cd frontend
+npm install
+```
+
+### Running the Frontend
+
+```bash
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The frontend will typically run on [http://localhost:3000](http://localhost:3000)
 
-Build the application for production:
+---
 
-```bash
-# npm
-npm run build
+## 💳 Stripe Integration
 
-# pnpm
-pnpm build
+Stripe is used for handling payment functionality. It is integrated using:
 
-# yarn
-yarn build
+- `@stripe/stripe-js`
+- `stripe` (Node.js backend package)
 
-# bun
-bun run build
-```
+Ensure to add your Stripe API keys in the proper configuration files or use environment variables.
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## 📦 Dependencies (Frontend)
 
-# pnpm
-pnpm preview
+Some of the main Nuxt 3 packages used:
 
-# yarn
-yarn preview
+- `@nuxt/ui`
+- `@nuxt/image`
+- `@nuxt/content`
+- `@nuxtjs/strapi`
+- `@pinia/nuxt`
+- `primevue`
+- `@stripe/stripe-js`
 
-# bun
-bun run preview
-```
+---
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📝 Notes
+
+- Make sure CORS is properly configured in Strapi for frontend requests.
+- TailwindCSS and PrimeVue are used for styling and UI components.
+- For internationalization, `vue-i18n` and `@intlify/nuxt3` are used.
+
+---
+
+## 📁 Deployment
+
+To deploy this project:
+
+- Deploy Strapi backend to a server (e.g. DigitalOcean, Heroku, Render).
+- Deploy Nuxt frontend using services like Vercel, Netlify, or your own VPS.
+- Set up proper environment variables for API URLs and Stripe keys.
+
+---
