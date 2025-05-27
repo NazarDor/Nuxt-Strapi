@@ -1,3 +1,43 @@
+# E-Strapi Project
+
+## 🧾 Overview
+
+This project consists of a full-stack application using **Nuxt 3** (frontend) and **Strapi** (backend) with integrated **Stripe** payment system.
+
+**Directory Structure:**
+
+```
+e-strapi/
+├── back/         # Strapi backend
+└── frontend/     # Nuxt frontend
+```
+
+---
+
+## ⚙️ Backend (Strapi)
+
+### Prerequisites
+
+- Node.js >= 18.x
+- npm >= 9.x or yarn
+
+### Installation
+
+```bash
+cd back
+npm install
+```
+
+### Running the Backend
+
+```bash
+npm run develop
+```
+
+The backend will typically run on [http://localhost:1337](http://localhost:1337)
+
+---
+
 ## 🌐 Frontend (Nuxt 3)
 
 ### Prerequisites
